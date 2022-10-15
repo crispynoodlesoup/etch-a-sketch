@@ -1,6 +1,6 @@
 const sketchContainer = document.querySelector(".grid-container");
-const rows = 32;
-const cols = 32;
+const rows = 28;
+const cols = 28;
 
 for(let i = 0; i < rows; i++) {
     const row = document.createElement("div");
