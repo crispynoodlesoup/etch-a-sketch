@@ -1,6 +1,6 @@
 const sketchContainer = document.querySelector(".grid-container");
-const rows = 36;
-const cols = 36;
+const rows = 32;
+const cols = 32;
 
 for(let i = 0; i < rows; i++) {
     const row = document.createElement("div");
@@ -13,6 +13,7 @@ for(let i = 0; i < rows; i++) {
     }
 }
 
+const game = document.querySelector(".etch-a-sketch");
 const cells = document.querySelectorAll(".cell");
 const button = document.querySelector("button");
 
@@ -24,6 +25,7 @@ function assignRandomColor(c) {
 function addHoverStyle(event, c) {
     const grey = 100 - Math.floor(Math.random()*60);
     c.style.backgroundColor = `rgb(${grey}, ${grey}, ${grey})`;
+    c.classList.add("touched");
     event.stopPropagation();
 }
 
@@ -31,26 +33,26 @@ function cellErase(c) {
     const grey = Number.parseInt(c.style.backgroundColor.substring(4,7));
     if(grey < 230) {
         const randGrey = 254 - Math.floor(Math.random()*25);
-        const newGrey = Math.min(grey * 1.5, randGrey);
+        const newGrey = Math.min(grey * 1.25, randGrey);
         c.style.backgroundColor = `rgb(${newGrey}, ${newGrey}, ${newGrey})`;
-    }
-    console.log(grey);
+    } else
+        c.classList.remove("touched");
 }
 
 function updateShake(e) { 
-    cells.forEach(cell => cellErase(cell))
-    if(sketchContainer.classList.contains("shake-down")) {
-        sketchContainer.classList.remove("shake-up");
-        sketchContainer.classList.remove("shake-down");
-    } else if(sketchContainer.classList.contains("shake-up"))
-        sketchContainer.classList.add("shake-down");
+    document.querySelectorAll(".touched").forEach(cell => cellErase(cell));
+    if(game.classList.contains("shake-down")) {
+        game.classList.remove("shake-up");
+        game.classList.remove("shake-down");
+    } else if(game.classList.contains("shake-up"))
+        game.classList.add("shake-down");
 }
 
 function shake() {
-    sketchContainer.classList.add("shake-up");
+    game.classList.add("shake-up");
 }
 
-sketchContainer.addEventListener("transitionend", e => updateShake(e));
+game.addEventListener("transitionend", e => updateShake(e));
 cells.forEach(cell => assignRandomColor(cell));
 cells.forEach(cell => cell.addEventListener("mouseenter", e => addHoverStyle(e,cell)));
 button.addEventListener("click", shake);

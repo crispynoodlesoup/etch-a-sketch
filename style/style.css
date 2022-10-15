@@ -10,12 +10,33 @@ body {
     justify-content: center;
     align-items: center;
     gap: 64px;
+    box-sizing: border-box;
+    font-family: system-ui, sans-serif;
+
+    background-color: rgb(255, 233, 233);
+}
+
+.etch-a-sketch {
+    padding: 64px 24px;
+    border-right: 16px solid red;
+    border-bottom: 12px solid red;
+    background-color: #f0564b;
+    border-radius: 40px;
+    transition: transform 0.1s linear;
+
+    display: flex;
 }
 
 .grid-container {
     background-color: grey;
+    border-top: 12px solid #cf3419;
+    border-left: 12px solid #cf3419;
+    border-right: 8px solid #cf3419;
+    border-bottom: 8px solid #cf3419;
+    border-radius: 8px;
+    margin: 0 24px;
+
     font-size: 0px;
-    transition: transform 0.1s linear;
 }
 
 .cell {
@@ -28,8 +49,50 @@ body {
     height: 16px;
 }
 
+img {
+    margin-bottom: -24px;
+}
+
 button {
+    background-color: #fde86d;
+    color: black;
+
+    border: 4px solid #cfb627;
+    border-top: none;
+    border-left: none;
+    border-radius: 16px;
+    font-size: 28px;
+    width: 192px;
+    height: 64px;
     display: block;
+
+    transition: border-width 0.05ms linear;
+}
+
+button:hover {
+    color: white;
+    background-color: #ff605b;
+    border-color: #b94b47;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+button:active {
+    border-width: 0px;
+    margin: 8px 0 0 8px;
+    transition: all 0.04s linear;
+}
+
+.knob {
+    background-color: white;
+    padding: 24px;
+    border-radius: 50%;
+    height: 48px;
+    width: 48px;
+    border-right: 8px solid darkgrey;
+    border-bottom: 8px solid darkgrey;
+
+    align-self: flex-end;
 }
 
 .shake-up {
