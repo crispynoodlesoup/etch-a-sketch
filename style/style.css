@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 64px;
+}
+
+.grid-container {
+    transition: transform 1s;
+    background-color: grey;
+    font-size: 0px;
+}
+
+.cell {
+    padding: 8px;
+    background-color: rgb(230, 230, 230);
+    display: inline-block;
+}
+
+.row {
+    height: 16px;
+}
+
+button {
+    display: block;
+}
+
+.shake-up {
+    transform: translate(0, 50px);
+}
+
+.shake-down {
+
+}
