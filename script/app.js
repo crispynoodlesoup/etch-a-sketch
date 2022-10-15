@@ -13,13 +13,9 @@ for(let i = 0; i < rows; i++) {
     }
 }
 
-const cells = document.querySelectorAll(".cell");
-
 function assignRandomColor(c) {
     let grey = 250 - Math.floor(Math.random()*25);
     c.style.backgroundColor = `rgb(${grey}, ${grey}, ${grey})`;
-
-    console.log(`rgb(${grey}, ${grey}, ${grey})`);
 }
 
 function addHoverStyle(event, element) {
@@ -28,5 +24,25 @@ function addHoverStyle(event, element) {
     event.stopPropagation();
 }
 
+function stopShakeUp(e) { 
+    console.log(e);
+    if(sketchContainer.classList.contains("shake-down")) {
+        sketchContainer.classList.remove("shake-up");
+        sketchContainer.classList.remove("shake-down");
+    } else if(sketchContainer.classList.contains("shake-up"))
+        sketchContainer.classList.add("shake-down");
+    else
+        return;
+}
+
+function shake() {
+    sketchContainer.classList.add("shake-up");
+}
+
+const cells = document.querySelectorAll(".cell");
+const button = document.querySelector("button");
+
+sketchContainer.addEventListener("transitionend", e => stopShakeUp(e));
 cells.forEach(cell => assignRandomColor(cell));
 cells.forEach(cell => cell.addEventListener("mouseenter", e => addHoverStyle(e,cell)));
+button.addEventListener("click", shake);
