@@ -15,7 +15,7 @@ body {
 .grid-container {
     background-color: grey;
     font-size: 0px;
-    transition: transform 0.1s;
+    transition: transform 0.1s linear;
 }
 
 .cell {
@@ -33,10 +33,10 @@ button {
 }
 
 .shake-up {
-    transform: translate(0, -24px);
+    transform: translate(0, -40px);
 }
 
 .shake-down {
-    transform: translate(0, 48px);
-    transition: transform 0.4s;
+    transform: translate(0, 80px);
+    transition: transform 0.2s ease-out;
 }
