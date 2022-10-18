@@ -37,17 +37,20 @@ body {
     border-radius: 6px;
     margin: 0 24px;
 
+    user-select: none;
+    -webkit-user-drag: none;
+
     font-size: 0px;
 }
 
 .cell {
-    padding: 6px;
+    padding: 4px;
     background-color: rgb(230, 230, 230);
     display: inline-block;
 }
 
 .row {
-    height: 12px;
+    height: 8px;
 }
 
 img {
@@ -55,6 +58,9 @@ img {
     width: auto;
     margin-top: -48px;
     margin-bottom: -36px;
+
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
 button {
@@ -87,17 +93,48 @@ button:active {
     transition: all 0.04s linear;
 }
 
+.knob-stuff {
+    align-self: flex-end;
+}
+
+p {
+    text-align: center;
+    font-weight: 700;
+    color: #bb1c17;
+}
+
 .knob {
     background-color: white;
-    padding: 16px;
+    min-height: 64px;
+    min-width: 64px;
+    margin-top: 8px;
     border-radius: 50%;
     height: 32px;
     width: 32px;
     border-right: 6px solid darkgrey;
     border-bottom: 6px solid darkgrey;
-
-    align-self: flex-end;
+    user-select: none;
+    cursor: pointer;
 }
+
+.knob-marker {
+    margin: auto;
+    background-color: rgb(88, 88, 88);
+    height: 20px;
+    width: 4px;
+
+    padding-bottom: 44px;
+    border-radius: 0 0 4px 4px;
+    background-clip: content-box;
+    transition: transform 0.2s ease;
+    transform: rotate(-90deg);
+}
+
+.knob-click {
+    transform: rotate(0);
+}
+
+
 
 .shake-up {
     transform: translate(0, -36px);
